@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react"
+import { Facebook, Instagram, Linkedin, Mail, Phone } from 'lucide-react'
 
 export function Footer() {
   return (
@@ -83,7 +83,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 Oil-Standart. Все права защищены.</p>
+          <p>&copy; 2025 Oil-Standart. Все права защищены.</p>
         </div>
       </div>
     </footer>
