@@ -1,6 +1,8 @@
 import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react"
 
 export function Footer() {
+  const currentYear = new Date().getFullYear()
+
   return (
     <footer className="bg-indigo-900 text-white border-t-4 border-orange-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -69,21 +71,49 @@ export function Footer() {
 
           <div className="border-t-2 border-indigo-700 mt-8 pt-8">
             <h4 className="text-lg font-semibold mb-4">Контакты</h4>
-            <div className="space-y-3 text-gray-300">
-              <div className="flex items-center space-x-2">
-                <Phone className="h-4 w-4" />
-                <span>+7 (XXX) XXX-XX-XX</span>
+
+            {/* Телефоны по отделам */}
+            <div className="space-y-4 text-gray-300">
+              <div>
+                <h5 className="font-semibold text-orange-300 mb-2">Формовочные смазки:</h5>
+                <div className="flex items-center space-x-2">
+                  <Phone className="h-4 w-4" />
+                  <a href="tel:+79605947171" className="hover:text-orange-300 transition-colors">
+                    +7-960-594-71-71
+                  </a>
+                </div>
               </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4" />
-                <span>info@oil-standart.com</span>
+
+              <div>
+                <h5 className="font-semibold text-orange-300 mb-2">СОЖ серии СТАНДАРТ:</h5>
+                <div className="flex items-center space-x-2">
+                  <Phone className="h-4 w-4" />
+                  <a href="tel:+79066277171" className="hover:text-orange-300 transition-colors">
+                    +7-906-627-71-71
+                  </a>
+                </div>
+              </div>
+
+              <div className="pt-2">
+                <h5 className="font-semibold text-orange-300 mb-2">Email:</h5>
+                <div className="flex items-center space-x-2">
+                  <Mail className="h-4 w-4" />
+                  <a href="mailto:info@oil-standart.com" className="hover:text-orange-300 transition-colors">
+                    info@oil-standart.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="pt-2 text-sm text-gray-400">
+                <p>Пн-Пт: 9:00-17:00</p>
+                <p>Сб-Вс: выходной</p>
               </div>
             </div>
           </div>
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 Oil-Standart. Все права защищены.</p>
+          <p>&copy; {currentYear} Oil-Standart. Все права защищены.</p>
         </div>
       </div>
     </footer>

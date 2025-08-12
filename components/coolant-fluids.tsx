@@ -2,6 +2,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Wrench, Cpu, Cog, Droplets, Shield, Leaf } from "lucide-react"
+import { ConsultationModal } from "@/components/consultation-modal"
+import { CatalogModal } from "@/components/catalog-modal"
 
 export function CoolantFluids() {
   const coolantProducts = [
@@ -194,16 +196,20 @@ export function CoolantFluids() {
                 проходит строгий контроль качества и тестирование в реальных производственных условиях.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-indigo-900 hover:bg-indigo-800 font-bold shadow-lg">
-                  Получить консультацию
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-indigo-900 text-indigo-900 hover:bg-indigo-900 hover:text-white font-semibold bg-transparent"
-                >
-                  Скачать каталог серии СТАНДАРТ
-                </Button>
+                <ConsultationModal>
+                  <Button size="lg" className="bg-indigo-900 hover:bg-indigo-800 font-bold shadow-lg">
+                    Получить консультацию
+                  </Button>
+                </ConsultationModal>
+                <CatalogModal>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-2 border-indigo-900 text-indigo-900 hover:bg-indigo-900 hover:text-white font-semibold bg-transparent"
+                  >
+                    Скачать каталог серии СТАНДАРТ
+                  </Button>
+                </CatalogModal>
               </div>
             </div>
             <div>

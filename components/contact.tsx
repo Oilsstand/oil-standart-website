@@ -22,6 +22,7 @@ export function Contact() {
     e.preventDefault()
     // Handle form submission
     console.log("Form submitted:", formData)
+    alert("Спасибо! Мы свяжемся с вами в ближайшее время.")
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -114,9 +115,23 @@ export function Contact() {
                 <div className="flex items-start space-x-4">
                   <Phone className="h-6 w-6 text-orange-600 mt-1" />
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-1">Телефон</h3>
-                    <p className="text-gray-600">+7 (XXX) XXX-XX-XX</p>
-                    <p className="text-gray-600">+7 (XXX) XXX-XX-XX</p>
+                    <h3 className="font-bold text-gray-900 mb-1">Телефоны</h3>
+                    <div className="space-y-1">
+                      <p className="text-gray-600">
+                        <span className="font-medium">Формовочные смазки:</span>
+                        <br />
+                        <a href="tel:+79605947171" className="text-indigo-900 hover:text-orange-600">
+                          +7-960-594-71-71
+                        </a>
+                      </p>
+                      <p className="text-gray-600">
+                        <span className="font-medium">СОЖ серии СТАНДАРТ:</span>
+                        <br />
+                        <a href="tel:+79066277171" className="text-indigo-900 hover:text-orange-600">
+                          +7-906-627-71-71
+                        </a>
+                      </p>
+                    </div>
                   </div>
                 </div>
               </CardContent>
@@ -128,8 +143,9 @@ export function Contact() {
                   <Mail className="h-6 w-6 text-orange-600 mt-1" />
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">Email</h3>
-                    <p className="text-gray-600">info@oil-standart.com</p>
-                    <p className="text-gray-600">sales@oil-standart.com</p>
+                    <a href="mailto:info@oil-standart.com" className="text-indigo-900 hover:text-orange-600">
+                      info@oil-standart.com
+                    </a>
                   </div>
                 </div>
               </CardContent>
@@ -158,7 +174,7 @@ export function Contact() {
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">Режим работы</h3>
                     <p className="text-gray-600">
-                      Пн-Пт: 9:00 - 18:00
+                      Пн-Пт: 9:00 - 17:00
                       <br />
                       Сб-Вс: выходной
                     </p>

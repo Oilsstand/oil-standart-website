@@ -2,6 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Star, Droplets, Beaker, Settings } from "lucide-react"
+import { ConsultationModal } from "@/components/consultation-modal"
 
 export function Products() {
   const products = [
@@ -131,9 +132,11 @@ export function Products() {
                 Контролируем качество на каждом этапе производства. Используем современные технологии и проверенные
                 рецептуры для создания эффективных формовочных составов.
               </p>
-              <Button size="lg" className="bg-indigo-900 hover:bg-indigo-800 font-bold shadow-lg">
-                Узнать о производстве
-              </Button>
+              <ConsultationModal>
+                <Button size="lg" className="bg-indigo-900 hover:bg-indigo-800 font-bold shadow-lg">
+                  Узнать о производстве
+                </Button>
+              </ConsultationModal>
             </div>
             <div>
               <img

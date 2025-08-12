@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { ConsultationModal } from "@/components/consultation-modal"
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
@@ -50,9 +51,11 @@ export function Header() {
 
           {/* Contact Button */}
           <div className="hidden lg:block flex-shrink-0">
-            <Button className="bg-indigo-900 hover:bg-indigo-800 shadow-lg border border-indigo-800 font-semibold text-sm px-4 py-2">
-              Связаться
-            </Button>
+            <ConsultationModal>
+              <Button className="bg-indigo-900 hover:bg-indigo-800 shadow-lg border border-indigo-800 font-semibold text-sm px-4 py-2">
+                Связаться
+              </Button>
+            </ConsultationModal>
           </div>
 
           {/* Mobile menu button */}
@@ -83,9 +86,11 @@ export function Header() {
                       {item.name}
                     </a>
                   ))}
-                  <Button className="bg-indigo-900 hover:bg-indigo-800 shadow-lg border border-indigo-800 font-semibold mt-4 w-full">
-                    Связаться с нами
-                  </Button>
+                  <ConsultationModal>
+                    <Button className="bg-indigo-900 hover:bg-indigo-800 shadow-lg border border-indigo-800 font-semibold mt-4 w-full">
+                      Связаться с нами
+                    </Button>
+                  </ConsultationModal>
                 </div>
               </SheetContent>
             </Sheet>
