@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
@@ -8,6 +8,8 @@ import { ConsultationModal } from "@/components/consultation-modal"
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
 
   const navigation = [
     { name: "Главная", href: "#home" },
@@ -18,8 +20,34 @@ export function Header() {
     { name: "Контакты", href: "#contact" },
   ]
 
+  useEffect(() => {
+    const controlNavbar = () => {
+      const currentScrollY = window.scrollY
+
+      if (currentScrollY < 10) {
+        // Всегда показываем header в самом верху
+        setIsVisible(true)
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Скрываем при прокрутке вниз (после 100px)
+        setIsVisible(false)
+      } else if (currentScrollY < lastScrollY) {
+        // Показываем при прокрутке вверх
+        setIsVisible(true)
+      }
+
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener("scroll", controlNavbar)
+    return () => window.removeEventListener("scroll", controlNavbar)
+  }, [lastScrollY])
+
   return (
-    <header className="bg-white shadow-lg border-b-2 border-orange-300 sticky top-0 z-50">
+    <header
+      className={`bg-white shadow-lg border-b-2 border-orange-300 sticky top-0 z-50 transition-transform duration-300 ease-in-out ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-24">
           {/* Logo Section */}

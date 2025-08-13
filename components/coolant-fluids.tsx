@@ -11,153 +11,129 @@ export function CoolantFluids() {
       name: "СТАНДАРТ Multi Cut 100",
       category: "Универсальная СОЖ",
       description:
-        "СТАНДАРТ Multi Cut 100 - универсальная смазочно-охлаждающая жидкость для обработки различных металлов на токарных, фрезерных и сверлильных станках.",
+        "Универсальная смазочно-охлаждающая жидкость для обработки различных металлов на токарных, фрезерных и сверлильных станках.",
       features: [
         "Подходит для всех типов металлообработки",
         "Отличные антикоррозийные свойства",
         "Стабильная эмульсия длительного действия",
-        "Экономичный расход",
       ],
       applications: ["Токарные станки", "Фрезерные станки", "Сверлильные станки"],
-      icon: <Wrench className="h-10 w-10 text-indigo-700" />,
-      image: "/placeholder.svg?height=250&width=350&text=СТАНДАРТ Multi Cut 100",
+      icon: <Wrench className="h-7 w-7 text-indigo-700" />,
+      image: "/placeholder.svg?height=140&width=280&text=СТАНДАРТ Multi Cut 100",
       popular: true,
     },
     {
       name: "СТАНДАРТ MultiCut 140",
       category: "Для станков ЧПУ",
       description:
-        "СТАНДАРТ MultiCut 140 - высокопроизводительная СОЖ для станков с ЧПУ. Обеспечивает точность обработки, продлевает срок службы инструмента и защищает от коррозии.",
+        "Высокопроизводительная СОЖ для станков с ЧПУ. Обеспечивает точность обработки и продлевает срок службы инструмента.",
       features: [
         "Высокая точность размеров",
         "Продление срока службы инструмента до 40%",
         "Превосходная защита от коррозии",
-        "Совместимость с системами рециркуляции",
       ],
       applications: ["Обрабатывающие центры", "Токарные ЧПУ", "Фрезерные ЧПУ"],
-      icon: <Cpu className="h-10 w-10 text-orange-500" />,
-      image: "/placeholder.svg?height=250&width=350&text=СТАНДАРТ MultiCut 140",
+      icon: <Cpu className="h-7 w-7 text-orange-500" />,
+      image: "/placeholder.svg?height=140&width=280&text=СТАНДАРТ MultiCut 140",
       popular: false,
     },
     {
       name: "СТАНДАРТ AutoCut 200",
       category: "Для станков-автоматов",
       description:
-        "СТАНДАРТ AutoCut 200 - специализированная СОЖ для станков-автоматов и многошпиндельных станков. Оптимизирована для непрерывной работы и высоких скоростей резания.",
-      features: [
-        "Непрерывная работа 24/7",
-        "Высокие скорости резания",
-        "Стабильность при длительной эксплуатации",
-        "Минимальное пенообразование",
-      ],
+        "Специализированная СОЖ для станков-автоматов и многошпиндельных станков. Оптимизирована для непрерывной работы.",
+      features: ["Непрерывная работа 24/7", "Высокие скорости резания", "Стабильность при длительной эксплуатации"],
       applications: ["Станки-автоматы", "Многошпиндельные станки", "Автоматические линии"],
-      icon: <Cog className="h-10 w-10 text-indigo-600" />,
-      image: "/placeholder.svg?height=250&width=350&text=СТАНДАРТ AutoCut 200",
+      icon: <Cog className="h-7 w-7 text-indigo-600" />,
+      image: "/placeholder.svg?height=140&width=280&text=СТАНДАРТ AutoCut 200",
       popular: false,
     },
     {
       name: "СТАНДАРТ AluCut 300",
       category: "Для цветных металлов",
-      description:
-        "СТАНДАРТ AluCut 300 - специальная СОЖ для обработки алюминия и цветных металлов. Предотвращает налипание стружки и обеспечивает чистоту поверхности.",
-      features: [
-        "Предотвращение налипания стружки",
-        "Идеальная чистота поверхности",
-        "Защита от пятнообразования",
-        "Совместимость с алюминиевыми сплавами",
-      ],
+      description: "Специальная СОЖ для обработки алюминия и цветных металлов. Предотвращает налипание стружки.",
+      features: ["Предотвращение налипания стружки", "Идеальная чистота поверхности", "Защита от пятнообразования"],
       applications: ["Алюминий", "Медь", "Латунь", "Цинковые сплавы"],
-      icon: <Droplets className="h-10 w-10 text-indigo-600" />,
-      image: "/placeholder.svg?height=250&width=350&text=СТАНДАРТ AluCut 300",
+      icon: <Droplets className="h-7 w-7 text-indigo-600" />,
+      image: "/placeholder.svg?height=140&width=280&text=СТАНДАРТ AluCut 300",
       popular: false,
     },
     {
       name: "СТАНДАРТ SteelCut 400",
       category: "Для черных металлов",
       description:
-        "СТАНДАРТ SteelCut 400 - высокоэффективная СОЖ для обработки стали и чугуна. Обеспечивает отличное охлаждение при тяжелых режимах резания.",
-      features: [
-        "Тяжелые режимы резания",
-        "Отличное охлаждение",
-        "Высокая смазывающая способность",
-        "Защита от задиров",
-      ],
+        "Высокоэффективная СОЖ для обработки стали и чугуна. Обеспечивает отличное охлаждение при тяжелых режимах резания.",
+      features: ["Тяжелые режимы резания", "Отличное охлаждение", "Высокая смазывающая способность"],
       applications: ["Углеродистая сталь", "Легированная сталь", "Чугун", "Нержавеющая сталь"],
-      icon: <Shield className="h-10 w-10 text-indigo-600" />,
-      image: "/placeholder.svg?height=250&width=350&text=СТАНДАРТ SteelCut 400",
+      icon: <Shield className="h-7 w-7 text-indigo-600" />,
+      image: "/placeholder.svg?height=140&width=280&text=СТАНДАРТ SteelCut 400",
       popular: false,
     },
     {
       name: "СТАНДАРТ EcoCut 500",
       category: "Экологичная",
-      description:
-        "СТАНДАРТ EcoCut 500 - биоразлагаемая СОЖ на основе растительных компонентов. Безопасна для персонала и окружающей среды при сохранении высокой эффективности.",
-      features: [
-        "100% биоразлагаемая формула",
-        "Безопасность для персонала",
-        "Отсутствие вредных испарений",
-        "Высокая эффективность охлаждения",
-      ],
+      description: "Биоразлагаемая СОЖ на основе растительных компонентов. Безопасна для персонала и окружающей среды.",
+      features: ["100% биоразлагаемая формула", "Безопасность для персонала", "Отсутствие вредных испарений"],
       applications: ["Экологичное производство", "Пищевая промышленность", "Медицинское оборудование"],
-      icon: <Leaf className="h-10 w-10 text-green-600" />,
-      image: "/placeholder.svg?height=250&width=350&text=СТАНДАРТ EcoCut 500",
+      icon: <Leaf className="h-7 w-7 text-green-600" />,
+      image: "/placeholder.svg?height=140&width=280&text=СТАНДАРТ EcoCut 500",
       popular: false,
     },
   ]
 
   return (
-    <section id="coolant-fluids" className="py-24 bg-white">
+    <section id="coolant-fluids" className="py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Смазочно-охлаждающие жидкости серии СТАНДАРТ</h2>
-          <p className="text-xl text-gray-600 max-w-4xl mx-auto">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-3">Смазочно-охлаждающие жидкости серии СТАНДАРТ</h2>
+          <p className="text-lg text-gray-600 max-w-4xl mx-auto">
             Профессиональные СОЖ серии СТАНДАРТ для станков, станков-автоматов и оборудования с ЧПУ. Обеспечиваем
             точность обработки, продлеваем срок службы инструмента и защищаем оборудование.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid lg:grid-cols-2 gap-6">
           {coolantProducts.map((product, index) => (
             <Card
               key={index}
-              className={`transition-all duration-300 hover:shadow-2xl border-2 ${
+              className={`transition-all duration-300 hover:shadow-xl border-2 ${
                 product.popular
                   ? "ring-2 ring-orange-500 border-orange-300 shadow-lg"
                   : "border-gray-200 hover:border-indigo-300"
               }`}
             >
               {product.popular && (
-                <Badge className="absolute -top-3 left-4 bg-orange-500 text-white font-bold border-2 border-orange-600 shadow-md z-10">
+                <Badge className="absolute -top-2 left-3 bg-orange-500 text-white font-bold border-2 border-orange-600 shadow-md z-10 text-xs">
                   Популярный
                 </Badge>
               )}
-              <div className="relative h-48 overflow-hidden rounded-t-lg">
+              <div className="relative h-28 overflow-hidden rounded-t-lg">
                 <img
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}
                   className="w-full h-full object-cover"
                 />
               </div>
-              <CardHeader>
-                <div className="flex items-center justify-between mb-4">
+              <CardHeader className="pb-2">
+                <div className="flex items-center justify-between mb-2">
                   {product.icon}
-                  <Badge variant="secondary" className="font-medium">
+                  <Badge variant="secondary" className="font-medium text-xs">
                     {product.category}
                   </Badge>
                 </div>
-                <CardTitle className="text-xl text-indigo-900">{product.name}</CardTitle>
-                <CardDescription className="text-base leading-relaxed text-gray-600">
+                <CardTitle className="text-base text-indigo-900">{product.name}</CardTitle>
+                <CardDescription className="text-xs leading-relaxed text-gray-600">
                   {product.description}
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <div className="space-y-6">
+              <CardContent className="pt-0">
+                <div className="space-y-3">
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-3">Преимущества:</h4>
-                    <ul className="space-y-2">
+                    <h4 className="font-bold text-gray-900 mb-1 text-xs">Преимущества:</h4>
+                    <ul className="space-y-0.5">
                       {product.features.map((feature, idx) => (
-                        <li key={idx} className="text-sm text-gray-700 flex items-start font-medium">
-                          <div className="w-2 h-2 bg-indigo-700 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                        <li key={idx} className="text-xs text-gray-700 flex items-start font-medium">
+                          <div className="w-1 h-1 bg-indigo-700 rounded-full mr-2 mt-1.5 flex-shrink-0"></div>
                           {feature}
                         </li>
                       ))}
@@ -165,10 +141,10 @@ export function CoolantFluids() {
                   </div>
 
                   <div>
-                    <h4 className="font-bold text-gray-900 mb-3">Применение:</h4>
-                    <div className="flex flex-wrap gap-2">
+                    <h4 className="font-bold text-gray-900 mb-1 text-xs">Применение:</h4>
+                    <div className="flex flex-wrap gap-1">
                       {product.applications.map((app, idx) => (
-                        <Badge key={idx} variant="outline" className="text-xs">
+                        <Badge key={idx} variant="outline" className="text-xs py-0 px-1">
                           {app}
                         </Badge>
                       ))}
@@ -176,7 +152,7 @@ export function CoolantFluids() {
                   </div>
 
                   <Button
-                    className="w-full font-semibold shadow-md border"
+                    className="w-full font-semibold shadow-md border text-xs py-1.5"
                     variant={product.popular ? "default" : "outline"}
                   >
                     Получить консультацию
@@ -187,25 +163,24 @@ export function CoolantFluids() {
           ))}
         </div>
 
-        <div className="mt-16 bg-orange-50 rounded-2xl p-8 border-2 border-orange-200">
-          <div className="grid lg:grid-cols-2 gap-8 items-center">
+        <div className="mt-8 bg-orange-50 rounded-xl p-4 border-2 border-orange-200">
+          <div className="grid lg:grid-cols-2 gap-4 items-center">
             <div>
-              <h3 className="text-2xl font-bold text-indigo-900 mb-4">Серия СТАНДАРТ - наша гордость</h3>
-              <p className="text-lg text-gray-700 mb-6">
+              <h3 className="text-lg font-bold text-indigo-900 mb-2">Серия СТАНДАРТ - наша гордость</h3>
+              <p className="text-sm text-gray-700 mb-3">
                 Линейка СОЖ серии СТАНДАРТ разработана с учетом современных требований металлообработки. Каждый продукт
-                проходит строгий контроль качества и тестирование в реальных производственных условиях.
+                проходит строгий контроль качества.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <ConsultationModal>
-                  <Button size="lg" className="bg-indigo-900 hover:bg-indigo-800 font-bold shadow-lg">
+                  <Button className="bg-indigo-900 hover:bg-indigo-800 font-bold shadow-lg text-sm px-4 py-2">
                     Получить консультацию
                   </Button>
                 </ConsultationModal>
                 <CatalogModal>
                   <Button
-                    size="lg"
                     variant="outline"
-                    className="border-2 border-indigo-900 text-indigo-900 hover:bg-indigo-900 hover:text-white font-semibold bg-transparent"
+                    className="border-2 border-indigo-900 text-indigo-900 hover:bg-indigo-900 hover:text-white font-semibold bg-transparent text-sm px-4 py-2"
                   >
                     Скачать каталог серии СТАНДАРТ
                   </Button>
@@ -214,7 +189,7 @@ export function CoolantFluids() {
             </div>
             <div>
               <img
-                src="/placeholder.svg?height=300&width=400&text=Лаборатория контроля качества СОЖ серии СТАНДАРТ"
+                src="/placeholder.svg?height=120&width=200&text=Лаборатория контроля качества СОЖ серии СТАНДАРТ"
                 alt="Лаборатория контроля качества СОЖ серии СТАНДАРТ"
                 className="w-full h-auto rounded-lg shadow-lg"
               />
