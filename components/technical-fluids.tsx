@@ -94,10 +94,10 @@ export function TechnicalFluids() {
           {technicalProducts.map((product, index) => (
             <Card
               key={index}
-              className={`transition-all duration-300 hover:shadow-xl border-2 ${
+              className={`transition-all duration-300 hover:shadow-xl border-4 ${
                 product.popular
-                  ? "ring-2 ring-orange-500 border-orange-300 shadow-lg"
-                  : "border-gray-200 hover:border-indigo-300"
+                  ? "ring-4 ring-orange-500 border-orange-300 shadow-lg"
+                  : "border-indigo-300 hover:border-indigo-500"
               }`}
             >
               {product.popular && (

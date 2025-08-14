@@ -19,8 +19,10 @@ export function CoolantFluids() {
       ],
       applications: ["Токарные станки", "Фрезерные станки", "Сверлильные станки"],
       icon: <Wrench className="h-7 w-7 text-indigo-700" />,
-      image: "/placeholder.svg?height=140&width=280&text=СТАНДАРТ Multi Cut 100",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2025-08-14_20-04-42-g2te2PFNqcvkrcKlvMPq7XUEuYNRyG.png",
       popular: true,
+      bestseller: true, // Новое свойство
     },
     {
       name: "СТАНДАРТ MultiCut 140",
@@ -36,6 +38,7 @@ export function CoolantFluids() {
       icon: <Cpu className="h-7 w-7 text-orange-500" />,
       image: "/placeholder.svg?height=140&width=280&text=СТАНДАРТ MultiCut 140",
       popular: false,
+      bestseller: false,
     },
     {
       name: "СТАНДАРТ AutoCut 200",
@@ -47,6 +50,7 @@ export function CoolantFluids() {
       icon: <Cog className="h-7 w-7 text-indigo-600" />,
       image: "/placeholder.svg?height=140&width=280&text=СТАНДАРТ AutoCut 200",
       popular: false,
+      bestseller: false,
     },
     {
       name: "СТАНДАРТ AluCut 300",
@@ -57,6 +61,7 @@ export function CoolantFluids() {
       icon: <Droplets className="h-7 w-7 text-indigo-600" />,
       image: "/placeholder.svg?height=140&width=280&text=СТАНДАРТ AluCut 300",
       popular: false,
+      bestseller: false,
     },
     {
       name: "СТАНДАРТ SteelCut 400",
@@ -66,8 +71,9 @@ export function CoolantFluids() {
       features: ["Тяжелые режимы резания", "Отличное охлаждение", "Высокая смазывающая способность"],
       applications: ["Углеродистая сталь", "Легированная сталь", "Чугун", "Нержавеющая сталь"],
       icon: <Shield className="h-7 w-7 text-indigo-600" />,
-      image: "/placeholder.svg?height=140&width=280&text=СТАНДАРТ SteelCut 400",
+      image: "/images/steelcut-400-label.png",
       popular: false,
+      bestseller: false,
     },
     {
       name: "СТАНДАРТ EcoCut 500",
@@ -78,6 +84,7 @@ export function CoolantFluids() {
       icon: <Leaf className="h-7 w-7 text-green-600" />,
       image: "/placeholder.svg?height=140&width=280&text=СТАНДАРТ EcoCut 500",
       popular: false,
+      bestseller: false,
     },
   ]
 
@@ -96,10 +103,10 @@ export function CoolantFluids() {
           {coolantProducts.map((product, index) => (
             <Card
               key={index}
-              className={`transition-all duration-300 hover:shadow-xl border-2 ${
+              className={`transition-all duration-300 hover:shadow-xl border-4 ${
                 product.popular
-                  ? "ring-2 ring-orange-500 border-orange-300 shadow-lg"
-                  : "border-gray-200 hover:border-indigo-300"
+                  ? "ring-4 ring-orange-500 border-orange-300 shadow-lg"
+                  : "border-indigo-300 hover:border-indigo-500"
               }`}
             >
               {product.popular && (
@@ -107,12 +114,35 @@ export function CoolantFluids() {
                   Популярный
                 </Badge>
               )}
-              <div className="relative h-28 overflow-hidden rounded-t-lg">
-                <img
-                  src={product.image || "/placeholder.svg"}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
+              <div className="relative h-36 overflow-hidden rounded-t-lg grid grid-cols-2 gap-0">
+                <div className="relative overflow-hidden">
+                  <img
+                    src={product.image || "/placeholder.svg"}
+                    alt={product.name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="relative overflow-hidden bg-gray-100 flex items-center justify-center">
+                  {index === 0 ? (
+                    <img
+                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/%D1%83%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D1%82%D0%BE%D0%BA%D0%B0%D1%80%D0%BD%D0%BE%20%D1%84%D1%80%D0%B5%D0%B7%D0%B5%D1%80%D0%BD%D1%8B%D0%B9%20%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%BA-YEXRXTiabwmTxIpq0SvrOWfcn2VL3N.png"
+                      alt="Универсальный токарно-фрезерный станок с системой СОЖ"
+                      className="w-full h-full object-cover"
+                    />
+                  ) : index === 4 ? (
+                    <img
+                      src="/images/steel-processing.png"
+                      alt="Обработка стали с использованием СОЖ СТАНДАРТ SteelCut 400"
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <img
+                      src="/placeholder.svg?height=144&width=140&text=Продукт в действии"
+                      alt={`${product.name} в использовании`}
+                      className="w-full h-full object-cover opacity-50"
+                    />
+                  )}
+                </div>
               </div>
               <CardHeader className="pb-2">
                 <div className="flex items-center justify-between mb-2">
@@ -157,6 +187,15 @@ export function CoolantFluids() {
                   >
                     Получить консультацию
                   </Button>
+
+                  {/* Отметка "ХИТ ПРОДАЖ" */}
+                  {product.bestseller && (
+                    <div className="flex justify-center mt-2">
+                      <Badge className="bg-indigo-600 text-white font-bold border-2 border-indigo-700 shadow-md text-xs px-3 py-1">
+                        ХИТ ПРОДАЖ
+                      </Badge>
+                    </div>
+                  )}
                 </div>
               </CardContent>
             </Card>

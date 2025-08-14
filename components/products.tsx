@@ -15,7 +15,7 @@ export function Products() {
       icon: <Settings className="h-6 w-6 text-indigo-700" />,
       image:
         "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2025-08-14_01-21-00-t8pcIyB7IcnRosTOVz0HggsUiJ9zms.png",
-      popular: true,
+      popular: true, // Обновленная строка
       isLabel: false, // Убираем флаг этикетки
     },
     {
@@ -77,10 +77,10 @@ export function Products() {
           {products.map((product, index) => (
             <Card
               key={index}
-              className={`relative transition-all duration-300 hover:shadow-xl border-2 ${
+              className={`relative transition-all duration-300 hover:shadow-xl border-4 ${
                 product.popular
-                  ? "ring-2 ring-orange-500 border-orange-300 shadow-lg"
-                  : "border-gray-200 hover:border-indigo-300"
+                  ? "ring-4 ring-orange-500 border-orange-300 shadow-lg"
+                  : "border-indigo-300 hover:border-indigo-500"
               }`}
             >
               {product.popular && (
