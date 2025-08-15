@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin, Mail, Phone } from "lucide-react"
+import { Phone, Mail, MessageCircle, Send, Users } from "lucide-react"
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -18,13 +18,13 @@ export function Footer() {
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors">
-                <Facebook className="h-6 w-6" />
+                <MessageCircle className="h-6 w-6" />
               </a>
               <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors">
-                <Instagram className="h-6 w-6" />
+                <Send className="h-6 w-6" />
               </a>
               <a href="#" className="text-gray-400 hover:text-orange-400 transition-colors">
-                <Linkedin className="h-6 w-6" />
+                <Users className="h-6 w-6" />
               </a>
             </div>
           </div>
@@ -64,6 +64,11 @@ export function Footer() {
               <li>
                 <a href="#" className="hover:text-orange-300 transition-colors font-medium">
                   СТАНДАРТ AutoCut 200
+                </a>
+              </li>
+              <li>
+                <a href="#coolant-fluids" className="hover:text-orange-300 transition-colors font-medium">
+                  МР-7 (масляная СОЖ)
                 </a>
               </li>
             </ul>

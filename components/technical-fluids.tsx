@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Wrench, Droplets, Zap, Shield, Beaker, Cog } from "lucide-react"
 import { ConsultationModal } from "@/components/consultation-modal"
-import { CatalogModal } from "@/components/catalog-modal"
+import { QuickRequestModal } from "@/components/quick-request-modal"
 
 export function TechnicalFluids() {
   const technicalProducts = [
@@ -19,7 +19,6 @@ export function TechnicalFluids() {
       ],
       applications: ["Станки", "Редукторы", "Подшипники", "Промышленное оборудование"],
       icon: <Wrench className="h-8 w-8 text-indigo-700" />,
-      image: "/placeholder.svg?height=180&width=300&text=Масло индустриальное И-20",
       popular: false,
     },
     {
@@ -30,7 +29,6 @@ export function TechnicalFluids() {
       features: ["Высокая несущая способность", "Устойчивость к окислению", "Превосходная защита от износа"],
       applications: ["Тяжелые станки", "Прессы", "Крупные редукторы", "Промышленные механизмы"],
       icon: <Cog className="h-8 w-8 text-indigo-600" />,
-      image: "/placeholder.svg?height=180&width=300&text=Масло индустриальное И-40",
       popular: true,
     },
     {
@@ -41,7 +39,6 @@ export function TechnicalFluids() {
       features: ["Высокая растворяющая способность", "Быстрое испарение", "Совместимость с различными материалами"],
       applications: ["Лакокрасочные работы", "Обезжиривание", "Очистка оборудования", "Промышленная химия"],
       icon: <Beaker className="h-8 w-8 text-green-600" />,
-      image: "/placeholder.svg?height=180&width=300&text=Растворитель 646",
       popular: false,
     },
     {
@@ -52,7 +49,6 @@ export function TechnicalFluids() {
       features: ["Стабильные вязкостно-температурные свойства", "Отличная фильтруемость", "Защита от пенообразования"],
       applications: ["Гидравлические системы", "Прессы", "Подъемники", "Станки с ЧПУ"],
       icon: <Droplets className="h-8 w-8 text-indigo-600" />,
-      image: "/placeholder.svg?height=180&width=300&text=Жидкость гидравлическая МГЕ-10А",
       popular: false,
     },
     {
@@ -63,7 +59,6 @@ export function TechnicalFluids() {
       features: ["Всесезонное применение", "Низкая температура застывания", "Высокий индекс вязкости"],
       applications: ["Мобильная техника", "Строительное оборудование", "Сельхозтехника", "Автокраны"],
       icon: <Shield className="h-8 w-8 text-indigo-600" />,
-      image: "/placeholder.svg?height=180&width=300&text=Жидкость гидравлическая ВМГЗ",
       popular: false,
     },
     {
@@ -74,7 +69,6 @@ export function TechnicalFluids() {
       features: ["Защита от замерзания до -65°C", "Антикоррозионные свойства", "Совместимость с различными металлами"],
       applications: ["Системы охлаждения", "Автотранспорт", "Промышленное оборудование", "Отопительные системы"],
       icon: <Zap className="h-8 w-8 text-cyan-600" />,
-      image: "/placeholder.svg?height=180&width=300&text=Антифриз концентрат",
       popular: false,
     },
   ]
@@ -105,13 +99,6 @@ export function TechnicalFluids() {
                   Популярный
                 </Badge>
               )}
-              <div className="relative h-36 overflow-hidden rounded-t-lg">
-                <img
-                  src={product.image || "/placeholder.svg"}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
-              </div>
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between mb-2">
                   {product.icon}
@@ -149,12 +136,14 @@ export function TechnicalFluids() {
                     </div>
                   </div>
 
-                  <Button
-                    className="w-full font-semibold shadow-md border text-sm py-2"
-                    variant={product.popular ? "default" : "outline"}
-                  >
-                    Запросить цену
-                  </Button>
+                  <QuickRequestModal productName={product.name}>
+                    <Button
+                      className="w-full font-semibold shadow-md border text-sm py-2"
+                      variant={product.popular ? "default" : "outline"}
+                    >
+                      Быстрый запрос
+                    </Button>
+                  </QuickRequestModal>
                 </div>
               </CardContent>
             </Card>
@@ -162,36 +151,23 @@ export function TechnicalFluids() {
         </div>
 
         <div className="mt-12 bg-orange-50 rounded-2xl p-6 border-2 border-orange-200">
-          <div className="grid lg:grid-cols-2 gap-6 items-center">
-            <div>
-              <h3 className="text-xl font-bold text-indigo-900 mb-3">Комплексные поставки технических жидкостей</h3>
-              <p className="text-base text-gray-700 mb-4">
-                Обеспечиваем промышленные предприятия полным спектром технических жидкостей. Гарантируем качество,
-                соответствие ГОСТам и оперативную доставку.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3">
-                <CatalogModal>
-                  <Button size="lg" className="bg-indigo-900 hover:bg-indigo-800 font-bold shadow-lg">
-                    Запросить прайс-лист
-                  </Button>
-                </CatalogModal>
-                <ConsultationModal>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="border-2 border-indigo-900 text-indigo-900 hover:bg-indigo-900 hover:text-white font-semibold bg-transparent"
-                  >
-                    Оптовые поставки
-                  </Button>
-                </ConsultationModal>
-              </div>
-            </div>
-            <div>
-              <img
-                src="/placeholder.svg?height=220&width=320&text=Склад технических жидкостей"
-                alt="Склад технических жидкостей"
-                className="w-full h-auto rounded-lg shadow-lg"
-              />
+          <div className="text-center">
+            <h3 className="text-xl font-bold text-indigo-900 mb-3">Комплексные поставки технических жидкостей</h3>
+            <p className="text-base text-gray-700 mb-6 max-w-4xl mx-auto">
+              Обеспечиваем промышленные предприятия полным спектром технических жидкостей. Гарантируем качество,
+              соответствие ГОСТам и оперативную доставку.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <QuickRequestModal>
+                <Button size="lg" className="bg-orange-500 hover:bg-orange-400 font-bold shadow-lg">
+                  Быстрый запрос жидкостей
+                </Button>
+              </QuickRequestModal>
+              <ConsultationModal>
+                <Button size="lg" className="bg-indigo-900 hover:bg-indigo-800 font-bold shadow-lg">
+                  Получить консультацию
+                </Button>
+              </ConsultationModal>
             </div>
           </div>
         </div>

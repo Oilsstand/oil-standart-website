@@ -36,7 +36,7 @@ export function CoolantFluids() {
       ],
       applications: ["Обрабатывающие центры", "Токарные ЧПУ", "Фрезерные ЧПУ"],
       icon: <Cpu className="h-7 w-7 text-orange-500" />,
-      image: "/placeholder.svg?height=140&width=280&text=СТАНДАРТ MultiCut 140",
+      image: "/images/multicut-140-label.png",
       popular: false,
       bestseller: false,
     },
@@ -48,7 +48,7 @@ export function CoolantFluids() {
       features: ["Непрерывная работа 24/7", "Высокие скорости резания", "Стабильность при длительной эксплуатации"],
       applications: ["Станки-автоматы", "Многошпиндельные станки", "Автоматические линии"],
       icon: <Cog className="h-7 w-7 text-indigo-600" />,
-      image: "/placeholder.svg?height=140&width=280&text=СТАНДАРТ AutoCut 200",
+      image: "/images/autocut-200-label.png", // Обновленное изображение
       popular: false,
       bestseller: false,
     },
@@ -59,7 +59,7 @@ export function CoolantFluids() {
       features: ["Предотвращение налипания стружки", "Идеальная чистота поверхности", "Защита от пятнообразования"],
       applications: ["Алюминий", "Медь", "Латунь", "Цинковые сплавы"],
       icon: <Droplets className="h-7 w-7 text-indigo-600" />,
-      image: "/placeholder.svg?height=140&width=280&text=СТАНДАРТ AluCut 300",
+      image: "/images/alucut-300-label.png", // Обновить эту строку
       popular: false,
       bestseller: false,
     },
@@ -82,7 +82,23 @@ export function CoolantFluids() {
       features: ["100% биоразлагаемая формула", "Безопасность для персонала", "Отсутствие вредных испарений"],
       applications: ["Экологичное производство", "Пищевая промышленность", "Медицинское оборудование"],
       icon: <Leaf className="h-7 w-7 text-green-600" />,
-      image: "/placeholder.svg?height=140&width=280&text=СТАНДАРТ EcoCut 500",
+      image: "/images/ecocut-500-label.png",
+      popular: false,
+      bestseller: false,
+    },
+    {
+      name: "МР-7 Ойл Стандарт",
+      category: "Масляная СОЖ",
+      description:
+        "Высококачественная масляная смазочно-охлаждающая жидкость для тяжелых режимов обработки металлов. Обеспечивает превосходную смазку и охлаждение при экстремальных нагрузках.",
+      features: [
+        "Превосходные смазывающие свойства",
+        "Высокая термическая стабильность",
+        "Защита от задиров и износа инструмента",
+      ],
+      applications: ["Тяжелое точение", "Глубокое сверление", "Нарезание резьбы", "Зубообработка"],
+      icon: <Droplets className="h-7 w-7 text-amber-600" />,
+      image: "/images/mr7-label.png",
       popular: false,
       bestseller: false,
     },
@@ -100,7 +116,7 @@ export function CoolantFluids() {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-6">
-          {coolantProducts.map((product, index) => (
+          {coolantProducts.slice(0, -1).map((product, index) => (
             <Card
               key={index}
               className={`transition-all duration-300 hover:shadow-xl border-4 ${
@@ -114,7 +130,7 @@ export function CoolantFluids() {
                   Популярный
                 </Badge>
               )}
-              <div className="relative h-36 overflow-hidden rounded-t-lg grid grid-cols-2 gap-0">
+              <div className="relative h-40 overflow-hidden rounded-t-lg grid grid-cols-2 gap-0">
                 <div className="relative overflow-hidden">
                   <img
                     src={product.image || "/placeholder.svg"}
@@ -129,10 +145,34 @@ export function CoolantFluids() {
                       alt="Универсальный токарно-фрезерный станок с системой СОЖ"
                       className="w-full h-full object-cover"
                     />
+                  ) : index === 1 ? (
+                    <img
+                      src="/images/cnc-machine.png"
+                      alt="Станок с ЧПУ для высокоточной обработки с СОЖ СТАНДАРТ MultiCut 140"
+                      className="w-full h-full object-cover"
+                    />
+                  ) : index === 2 ? (
+                    <img
+                      src="/images/automatic-machining.png"
+                      alt="Автоматическая обработка на многошпиндельном станке с СОЖ СТАНДАРТ AutoCut 200"
+                      className="w-full h-full object-cover"
+                    />
+                  ) : index === 3 ? (
+                    <img
+                      src="/images/aluminum-machining.png"
+                      alt="Обработка алюминия с использованием СОЖ СТАНДАРТ AluCut 300"
+                      className="w-full h-full object-cover"
+                    />
                   ) : index === 4 ? (
                     <img
                       src="/images/steel-processing.png"
                       alt="Обработка стали с использованием СОЖ СТАНДАРТ SteelCut 400"
+                      className="w-full h-full object-cover"
+                    />
+                  ) : index === 5 ? (
+                    <img
+                      src="/images/precision-machining.png"
+                      alt="Прецизионная обработка с использованием экологичной СОЖ СТАНДАРТ EcoCut 500"
                       className="w-full h-full object-cover"
                     />
                   ) : (
@@ -200,6 +240,87 @@ export function CoolantFluids() {
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        {/* Отдельная секция для ОйлСтандарт */}
+        <div className="mt-12">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">Масляные СОЖ</h3>
+            <p className="text-base text-gray-600 max-w-3xl mx-auto">
+              Специализированные масляные смазочно-охлаждающие жидкости для особо тяжелых режимов обработки
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-1 gap-6 max-w-4xl mx-auto">
+            <div className="w-full">
+              {/* Рендер карточки ОйлСтандарт */}
+              {coolantProducts.slice(-1).map((product, index) => (
+                <Card
+                  key={`mr7-${index}`}
+                  className="transition-all duration-300 hover:shadow-xl border-4 border-amber-300 hover:border-amber-500"
+                >
+                  <div className="relative h-40 overflow-hidden rounded-t-lg grid grid-cols-2 gap-0">
+                    <div className="relative overflow-hidden">
+                      <img
+                        src={product.image || "/placeholder.svg"}
+                        alt={product.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="relative overflow-hidden bg-gray-100 flex items-center justify-center">
+                      <img
+                        src="/images/oil-machining.png"
+                        alt="Обработка металла с масляной СОЖ ОйлСтандарт"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                  <CardHeader className="pb-2">
+                    <div className="flex items-center justify-between mb-2">
+                      {product.icon}
+                      <Badge variant="secondary" className="font-medium text-xs bg-amber-100 text-amber-800">
+                        {product.category}
+                      </Badge>
+                    </div>
+                    <CardTitle className="text-base text-amber-900">{product.name}</CardTitle>
+                    <CardDescription className="text-xs leading-relaxed text-gray-600">
+                      {product.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="pt-0">
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className="font-bold text-gray-900 mb-1 text-xs">Преимущества:</h4>
+                        <ul className="space-y-0.5">
+                          {product.features.map((feature, idx) => (
+                            <li key={idx} className="text-xs text-gray-700 flex items-start font-medium">
+                              <div className="w-1 h-1 bg-amber-700 rounded-full mr-2 mt-1.5 flex-shrink-0"></div>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+
+                      <div>
+                        <h4 className="font-bold text-gray-900 mb-1 text-xs">Применение:</h4>
+                        <div className="flex flex-wrap gap-1">
+                          {product.applications.map((app, idx) => (
+                            <Badge key={idx} variant="outline" className="text-xs py-0 px-1 border-amber-300">
+                              {app}
+                            </Badge>
+                          ))}
+                        </div>
+                      </div>
+
+                      <Button className="w-full font-semibold shadow-md border text-xs py-1.5 bg-amber-600 hover:bg-amber-700 text-white">
+                        Получить консультацию
+                      </Button>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="mt-8 bg-orange-50 rounded-xl p-4 border-2 border-orange-200">
