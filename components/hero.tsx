@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Shield, Award, Zap, Factory, Droplets, Settings } from "lucide-react"
+import { ArrowRight, Shield, Award, Zap } from "lucide-react"
 import { ConsultationModal } from "@/components/consultation-modal"
 import { CatalogModal } from "@/components/catalog-modal"
 
@@ -126,26 +126,6 @@ export function Hero() {
                     <div className="absolute bottom-2 left-2">
                       <div className="bg-green-600/90 text-white px-2 py-1 rounded text-xs font-semibold backdrop-blur-sm">
                         Тех. жидкости
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Bottom info panel */}
-                <div className="absolute bottom-4 left-4 right-4">
-                  <div className="bg-white/20 backdrop-blur-md rounded-lg p-4 border border-white/30">
-                    <div className="grid grid-cols-3 gap-4 text-center">
-                      <div>
-                        <Factory className="h-6 w-6 text-orange-400 mx-auto mb-1" />
-                        <div className="text-xs text-white/90 font-medium">Производство</div>
-                      </div>
-                      <div>
-                        <Droplets className="h-6 w-6 text-orange-400 mx-auto mb-1" />
-                        <div className="text-xs text-white/90 font-medium">СОЖ СТАНДАРТ</div>
-                      </div>
-                      <div>
-                        <Settings className="h-6 w-6 text-orange-400 mx-auto mb-1" />
-                        <div className="text-xs text-white/90 font-medium">Тех. жидкости</div>
                       </div>
                     </div>
                   </div>
