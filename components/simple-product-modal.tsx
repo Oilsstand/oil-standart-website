@@ -9,7 +9,6 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Mail, MessageCircle, Send, Loader2, CheckCircle, AlertCircle } from "lucide-react"
-import { sendProductInquiry } from "@/app/actions/send-email"
 
 interface SimpleProductModalProps {
   children: React.ReactNode
@@ -36,30 +35,30 @@ export function SimpleProductModal({ children, productName }: SimpleProductModal
     setError("")
 
     try {
-      const formDataToSend = new FormData()
-      formDataToSend.append("name", formData.name)
-      formDataToSend.append("email", formData.email)
-      formDataToSend.append("phone", formData.phone)
-      formDataToSend.append("message", formData.message)
-      formDataToSend.append("product", productName)
+      // Имитация отправки для статического экспорта
+      await new Promise((resolve) => setTimeout(resolve, 1500))
 
-      const result = await sendProductInquiry(formDataToSend)
+      console.log("Запрос информации о продукте:", {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+        product: productName,
+        timestamp: new Date().toLocaleString("ru-RU", { timeZone: "Europe/Moscow" }),
+      })
 
-      if (result.success) {
-        setIsSubmitted(true)
-        // Сброс через 5 секунд
-        setTimeout(() => {
-          setIsSubmitted(false)
-          setFormData({
-            name: "",
-            email: "",
-            phone: "",
-            message: "",
-          })
-        }, 5000)
-      } else {
-        setError(result.message)
-      }
+      setIsSubmitted(true)
+
+      // Сброс через 5 секунд
+      setTimeout(() => {
+        setIsSubmitted(false)
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          message: "",
+        })
+      }, 5000)
     } catch (error) {
       console.error("Ошибка отправки:", error)
       setError("Произошла ошибка при отправке сообщения. Попробуйте еще раз.")

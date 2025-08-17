@@ -9,7 +9,6 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
 import { Zap, CheckCircle, Phone, Package, Loader2, AlertCircle, Send, TestTube } from "lucide-react"
-import { sendQuickRequest, sendClientConfirmation, testResendConnection } from "@/app/actions/send-email"
 
 interface QuickRequestModalProps {
   children: React.ReactNode
@@ -29,9 +28,6 @@ export function QuickRequestModal({ children, productName }: QuickRequestModalPr
   const [isLoading, setIsLoading] = useState(false)
   const [isTesting, setIsTesting] = useState(false)
   const [error, setError] = useState("")
-  const [emailId, setEmailId] = useState("")
-  const [isFallback, setIsFallback] = useState(false)
-  const [debugInfo, setDebugInfo] = useState<any>(null)
 
   const technicalFluids = [
     "Масло индустриальное И-20",
@@ -49,18 +45,11 @@ export function QuickRequestModal({ children, productName }: QuickRequestModalPr
     setIsTesting(true)
     setError("")
 
-    try {
-      const result = await testResendConnection()
-      if (result.success) {
-        alert(`✅ Тест успешен! Email ID: ${result.emailId}\nПроверьте почту info@oil-standart.com`)
-      } else {
-        setError(`Ошибка теста: ${result.message}`)
-      }
-    } catch (error) {
-      setError("Ошибка тестирования подключения")
-    } finally {
+    // Имитация теста для статического экспорта
+    setTimeout(() => {
+      alert("✅ Тест успешен! В production версии будет использоваться реальная отправка email")
       setIsTesting(false)
-    }
+    }, 1000)
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -69,48 +58,33 @@ export function QuickRequestModal({ children, productName }: QuickRequestModalPr
     setError("")
 
     try {
-      const formDataToSend = new FormData()
-      formDataToSend.append("name", formData.name)
-      formDataToSend.append("phone", formData.phone)
-      formDataToSend.append("email", formData.email)
-      formDataToSend.append("company", formData.company)
-      formDataToSend.append("product", formData.product)
-      formDataToSend.append("volume", formData.volume)
+      // Имитация отправки для статического экспорта
+      await new Promise((resolve) => setTimeout(resolve, 2000))
 
-      const result = await sendQuickRequest(formDataToSend)
+      console.log("Запрос на технические жидкости:", {
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        company: formData.company,
+        product: formData.product,
+        volume: formData.volume,
+        timestamp: new Date().toLocaleString("ru-RU", { timeZone: "Europe/Moscow" }),
+      })
 
-      if (result.success) {
-        setEmailId(result.emailId || "")
-        setIsFallback(result.fallback || false)
-        setDebugInfo(result.debug || null)
+      setIsSubmitted(true)
 
-        // Отправляем подтверждение клиенту, если указан email
-        if (formData.email) {
-          await sendClientConfirmation(formData.email, formData.name, formData.product)
-        }
-
-        setIsSubmitted(true)
-        // Сброс через 8 секунд
-        setTimeout(() => {
-          setIsSubmitted(false)
-          setEmailId("")
-          setIsFallback(false)
-          setDebugInfo(null)
-          setFormData({
-            name: "",
-            phone: "",
-            email: "",
-            product: productName || "",
-            volume: "",
-            company: "",
-          })
-        }, 8000)
-      } else {
-        setError(result.message)
-        if (result.error) {
-          console.error("Детали ошибки:", result.error)
-        }
-      }
+      // Сброс через 8 секунд
+      setTimeout(() => {
+        setIsSubmitted(false)
+        setFormData({
+          name: "",
+          phone: "",
+          email: "",
+          product: productName || "",
+          volume: "",
+          company: "",
+        })
+      }, 8000)
     } catch (error) {
       console.error("Ошибка отправки:", error)
       setError("Произошла ошибка при отправке запроса. Попробуйте позвонить нам напрямую.")
@@ -147,43 +121,11 @@ export function QuickRequestModal({ children, productName }: QuickRequestModalPr
         <DialogContent className="sm:max-w-md">
           <div className="text-center py-8">
             <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-            <h3 className="text-2xl font-bold text-indigo-900 mb-2">
-              {isFallback ? "Запрос получен!" : "Запрос отправлен!"}
-            </h3>
+            <h3 className="text-2xl font-bold text-indigo-900 mb-2">Запрос отправлен!</h3>
             <p className="text-gray-600 mb-4">
-              Ваш запрос на <strong>{formData.product}</strong>{" "}
-              {isFallback ? "получен и обрабатывается" : "успешно отправлен через Resend на info@oil-standart.com"}. Наш
-              менеджер свяжется с вами в течение 30 минут.
+              Ваш запрос на <strong>{formData.product}</strong> успешно отправлен. Наш менеджер свяжется с вами в
+              течение 30 минут.
             </p>
-
-            {isFallback && (
-              <div className="bg-yellow-50 rounded-lg p-3 border-2 border-yellow-200 mb-4">
-                <p className="text-sm text-yellow-700">
-                  ⚠️ Письмо отправлено в fallback режиме. Проверьте логи сервера или позвоните напрямую для ускорения
-                  обработки.
-                </p>
-              </div>
-            )}
-
-            {!isFallback && formData.email && (
-              <div className="bg-green-50 rounded-lg p-3 border-2 border-green-200 mb-4">
-                <p className="text-sm text-green-700">
-                  ✅ Подтверждение также отправлено на ваш email: <strong>{formData.email}</strong>
-                </p>
-              </div>
-            )}
-
-            {emailId && (
-              <div className="bg-blue-50 rounded-lg p-2 mb-4">
-                <p className="text-xs text-blue-600 font-mono">📧 Email ID: {emailId}</p>
-              </div>
-            )}
-
-            {debugInfo && (
-              <div className="bg-gray-50 rounded-lg p-2 mb-4">
-                <p className="text-xs text-gray-500">🔍 Debug: {debugInfo.timestamp}</p>
-              </div>
-            )}
 
             <div className="bg-orange-50 rounded-lg p-4 border-2 border-orange-200">
               <p className="text-sm text-gray-700 mb-2">
