@@ -2,7 +2,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Star, Droplets, Beaker, Settings } from "lucide-react"
-import { ConsultationModal } from "@/components/consultation-modal"
+import { SimpleProductModal } from "@/components/simple-product-modal"
 
 export function Products() {
   const products = [
@@ -118,38 +118,52 @@ export function Products() {
                       ))}
                     </ul>
                   </div>
-                  <Button
-                    className="w-full font-semibold shadow-md border text-sm py-2"
-                    variant={product.popular ? "default" : "outline"}
-                  >
-                    Подробнее
-                  </Button>
+                  <SimpleProductModal productName={product.name}>
+                    <Button
+                      className="w-full font-semibold shadow-md border text-sm py-2"
+                      variant={product.popular ? "default" : "outline"}
+                    >
+                      Подробнее
+                    </Button>
+                  </SimpleProductModal>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        <div className="mt-8 bg-orange-50 rounded-xl p-4 border-2 border-orange-200">
-          <div className="grid lg:grid-cols-2 gap-4 items-center">
+        <div className="mt-6 bg-orange-50 rounded-lg p-2 border-2 border-orange-200">
+          <div className="grid lg:grid-cols-2 gap-3 items-center">
             <div>
-              <h3 className="text-lg font-bold text-indigo-900 mb-2">Собственное производство формовочных смазок</h3>
-              <p className="text-sm text-gray-700 mb-3">
+              <h3 className="text-base font-bold text-indigo-900 mb-2">Собственное производство формовочных смазок</h3>
+              <p className="text-xs text-gray-700 mb-2">
                 Контролируем качество на каждом этапе производства. Используем современные технологии и проверенные
                 рецептуры.
               </p>
-              <ConsultationModal>
-                <Button className="bg-indigo-900 hover:bg-indigo-800 font-bold shadow-lg text-sm px-4 py-2">
-                  Узнать о производстве
-                </Button>
-              </ConsultationModal>
             </div>
             <div>
-              <img
-                src="/placeholder.svg?height=120&width=200&text=Производство формовочных смазок"
-                alt="Производство формовочных смазок"
-                className="w-full h-auto rounded-lg shadow-lg"
-              />
+              <div className="grid grid-cols-2 gap-1">
+                <img
+                  src="/placeholder.svg?height=60&width=80&text=Производство 1"
+                  alt="Производство формовочных смазок - этап 1"
+                  className="w-full h-auto rounded-md shadow-sm"
+                />
+                <img
+                  src="/placeholder.svg?height=60&width=80&text=Производство 2"
+                  alt="Производство формовочных смазок - этап 2"
+                  className="w-full h-auto rounded-md shadow-sm"
+                />
+                <img
+                  src="/placeholder.svg?height=60&width=80&text=Производство 3"
+                  alt="Производство формовочных смазок - этап 3"
+                  className="w-full h-auto rounded-md shadow-sm"
+                />
+                <img
+                  src="/placeholder.svg?height=60&width=80&text=Производство 4"
+                  alt="Производство формовочных смазок - этап 4"
+                  className="w-full h-auto rounded-md shadow-sm"
+                />
+              </div>
             </div>
           </div>
         </div>

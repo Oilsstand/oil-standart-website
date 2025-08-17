@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
@@ -72,6 +71,19 @@ export function ConsultationModal({ children }: ConsultationModalProps) {
             <div className="mt-3 flex items-center text-sm text-gray-600">
               <Clock className="h-4 w-4 mr-2" />
               Пн-Пт: 9:00-17:00, Сб-Вс: выходной
+            </div>
+
+            {/* Добавляем кнопку WhatsApp */}
+            <div className="mt-4">
+              <a
+                href="https://wa.me/79605947171?text=Здравствуйте!%20Нужна%20консультация%20по%20СОЖ%20серии%20СТАНДАРТ.%20Можете%20помочь%20с%20выбором%20подходящего%20продукта?"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg transition-colors w-full"
+              >
+                <MessageCircle className="h-4 w-4 mr-2" />
+                Написать в WhatsApp
+              </a>
             </div>
           </div>
 

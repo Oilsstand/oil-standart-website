@@ -221,12 +221,14 @@ export function CoolantFluids() {
                     </div>
                   </div>
 
-                  <Button
-                    className="w-full font-semibold shadow-md border text-xs py-1.5"
-                    variant={product.popular ? "default" : "outline"}
-                  >
-                    Получить консультацию
-                  </Button>
+                  <ConsultationModal>
+                    <Button
+                      className="w-full font-semibold shadow-md border text-xs py-1.5"
+                      variant={product.popular ? "default" : "outline"}
+                    >
+                      Получить консультацию
+                    </Button>
+                  </ConsultationModal>
 
                   {/* Отметка "ХИТ ПРОДАЖ" */}
                   {product.bestseller && (
@@ -312,9 +314,11 @@ export function CoolantFluids() {
                         </div>
                       </div>
 
-                      <Button className="w-full font-semibold shadow-md border text-xs py-1.5 bg-amber-600 hover:bg-amber-700 text-white">
-                        Получить консультацию
-                      </Button>
+                      <ConsultationModal>
+                        <Button className="w-full font-semibold shadow-md border text-xs py-1.5 bg-amber-600 hover:bg-amber-700 text-white">
+                          Получить консультацию
+                        </Button>
+                      </ConsultationModal>
                     </div>
                   </CardContent>
                 </Card>
@@ -323,24 +327,24 @@ export function CoolantFluids() {
           </div>
         </div>
 
-        <div className="mt-8 bg-orange-50 rounded-xl p-4 border-2 border-orange-200">
-          <div className="grid lg:grid-cols-2 gap-4 items-center">
+        <div className="mt-4 bg-orange-50 rounded-lg p-2 border-2 border-orange-200">
+          <div className="grid lg:grid-cols-2 gap-2 items-center">
             <div>
-              <h3 className="text-lg font-bold text-indigo-900 mb-2">Серия СТАНДАРТ - наша гордость</h3>
-              <p className="text-sm text-gray-700 mb-3">
+              <h3 className="text-sm font-bold text-indigo-900 mb-1">Серия СТАНДАРТ - наша гордость</h3>
+              <p className="text-xs text-gray-700 mb-2">
                 Линейка СОЖ серии СТАНДАРТ разработана с учетом современных требований металлообработки. Каждый продукт
                 проходит строгий контроль качества.
               </p>
-              <div className="flex flex-col sm:flex-row gap-2">
+              <div className="flex flex-col sm:flex-row gap-1">
                 <ConsultationModal>
-                  <Button className="bg-indigo-900 hover:bg-indigo-800 font-bold shadow-lg text-sm px-4 py-2">
+                  <Button className="bg-indigo-900 hover:bg-indigo-800 font-bold shadow-lg text-xs px-2 py-1">
                     Получить консультацию
                   </Button>
                 </ConsultationModal>
                 <CatalogModal>
                   <Button
                     variant="outline"
-                    className="border-2 border-indigo-900 text-indigo-900 hover:bg-indigo-900 hover:text-white font-semibold bg-transparent text-sm px-4 py-2"
+                    className="border-2 border-indigo-900 text-indigo-900 hover:bg-indigo-900 hover:text-white font-semibold bg-transparent text-xs px-2 py-1"
                   >
                     Скачать каталог серии СТАНДАРТ
                   </Button>
@@ -348,11 +352,23 @@ export function CoolantFluids() {
               </div>
             </div>
             <div>
-              <img
-                src="/placeholder.svg?height=120&width=200&text=Лаборатория контроля качества СОЖ серии СТАНДАРТ"
-                alt="Лаборатория контроля качества СОЖ серии СТАНДАРТ"
-                className="w-full h-auto rounded-lg shadow-lg"
-              />
+              <div className="grid grid-cols-3 gap-1">
+                <img
+                  src="/placeholder.svg?height=50&width=60&text=Лаборатория"
+                  alt="Лаборатория контроля качества СОЖ серии СТАНДАРТ"
+                  className="w-full h-auto rounded-md shadow-sm"
+                />
+                <img
+                  src="/placeholder.svg?height=50&width=60&text=Производство"
+                  alt="Производство СОЖ серии СТАНДАРТ"
+                  className="w-full h-auto rounded-md shadow-sm"
+                />
+                <img
+                  src="/placeholder.svg?height=50&width=60&text=Тестирование"
+                  alt="Тестирование СОЖ серии СТАНДАРТ"
+                  className="w-full h-auto rounded-md shadow-sm"
+                />
+              </div>
             </div>
           </div>
         </div>

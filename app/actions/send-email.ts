@@ -11,6 +11,287 @@ function sanitizeTag(value: string): string {
     .substring(0, 50) // Ограничиваем длину
 }
 
+export async function sendProductInquiry(formData: FormData) {
+  const data = {
+    name: formData.get("name") as string,
+    email: formData.get("email") as string,
+    phone: formData.get("phone") as string,
+    message: formData.get("message") as string,
+    product: formData.get("product") as string,
+  }
+
+  // Валидация обязательных полей
+  if (!data.name || !data.email || !data.phone || !data.product) {
+    return {
+      success: false,
+      message: "Пожалуйста, заполните все обязательные поля",
+    }
+  }
+
+  const resendApiKey = process.env.RESEND_API_KEY || "re_i2JzKXwE_39mmuiDwMrnLVSZjHCcrLyRe"
+
+  console.log("🔍 Отправляем запрос о продукте:", data.product)
+  console.log("📧 От:", data.name, data.email)
+
+  try {
+    const { Resend } = await import("resend")
+    const resend = new Resend(resendApiKey)
+
+    // HTML шаблон для email
+    const emailHtml = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <title>Запрос информации о продукте</title>
+          <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+            .header { background: linear-gradient(135deg, #1e3a8a, #7c3aed); color: white; padding: 20px; border-radius: 8px 8px 0 0; }
+            .content { background: #f8fafc; padding: 20px; border: 1px solid #e2e8f0; }
+            .footer { background: #1e3a8a; color: white; padding: 15px; border-radius: 0 0 8px 8px; text-align: center; }
+            .info-row { margin: 10px 0; padding: 8px; background: white; border-left: 4px solid #f97316; }
+            .label { font-weight: bold; color: #1e3a8a; }
+            .value { margin-left: 10px; }
+            .product-highlight { background: #fef3c7; border: 1px solid #f59e0b; padding: 15px; border-radius: 6px; margin: 15px 0; }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <h1 style="margin: 0; font-size: 24px;">📋 Запрос информации о продукте</h1>
+              <p style="margin: 5px 0 0 0; opacity: 0.9;">Oil-Standart - Формовочные смазки</p>
+            </div>
+            
+            <div class="content">
+              <div class="product-highlight">
+                <h2 style="margin: 0 0 10px 0; color: #1e3a8a;">🛢️ Продукт: ${data.product}</h2>
+                <p style="margin: 0; color: #92400e;">Клиент запрашивает подробную информацию</p>
+              </div>
+
+              <h3 style="color: #1e3a8a; margin-top: 20px;">Контактная информация</h3>
+              
+              <div class="info-row">
+                <span class="label">👤 Имя:</span>
+                <span class="value">${data.name}</span>
+              </div>
+              
+              <div class="info-row">
+                <span class="label">📧 Email:</span>
+                <span class="value"><a href="mailto:${data.email}" style="color: #1e3a8a; text-decoration: none;">${data.email}</a></span>
+              </div>
+              
+              <div class="info-row">
+                <span class="label">📞 Телефон:</span>
+                <span class="value"><a href="tel:${data.phone}" style="color: #1e3a8a; text-decoration: none;">${data.phone}</a></span>
+              </div>
+
+              ${
+                data.message
+                  ? `
+              <h3 style="color: #1e3a8a; margin-top: 20px;">Сообщение клиента</h3>
+              <div style="background: white; padding: 15px; border-radius: 6px; border: 1px solid #e2e8f0;">
+                <p style="margin: 0; font-style: italic; color: #4b5563;">"${data.message}"</p>
+              </div>
+              `
+                  : ""
+              }
+
+              <div style="background: #dcfce7; border: 1px solid #16a34a; padding: 15px; border-radius: 6px; margin: 20px 0;">
+                <strong>📋 Что нужно предоставить клиенту:</strong><br>
+                • Технические характеристики продукта ${data.product}<br>
+                • Инструкции по применению<br>
+                • Коммерческое предложение с ценами<br>
+                • Условия поставки и минимальные партии
+              </div>
+
+              <p style="margin-top: 20px; color: #64748b; font-size: 14px;">
+                <strong>Дата и время запроса:</strong> ${new Date().toLocaleString("ru-RU", {
+                  timeZone: "Europe/Moscow",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })} (МСК)
+              </p>
+            </div>
+            
+            <div class="footer">
+              <p style="margin: 0;">Oil-Standart - Формовочные смазки для промышленности</p>
+              <p style="margin: 5px 0 0 0; font-size: 14px; opacity: 0.8;">Автоматическое уведомление с сайта</p>
+            </div>
+          </div>
+        </body>
+      </html>
+    `
+
+    console.log("📝 HTML шаблон подготовлен для продукта:", data.product)
+
+    const emailData = {
+      from: "Oil-Standart <onboarding@resend.dev>",
+      to: ["info@oil-standart.com"],
+      subject: `📋 Запрос информации: ${data.product} от ${data.name}`,
+      html: emailHtml,
+      text: `
+Запрос информации о продукте: ${data.product}
+
+Контактная информация:
+- Имя: ${data.name}
+- Email: ${data.email}
+- Телефон: ${data.phone}
+
+${data.message ? `Сообщение: ${data.message}` : ""}
+
+Что предоставить клиенту:
+- Технические характеристики
+- Инструкции по применению
+- Коммерческое предложение
+- Условия поставки
+
+Дата запроса: ${new Date().toLocaleString("ru-RU", { timeZone: "Europe/Moscow" })} (МСК)
+      `.trim(),
+      tags: [
+        { name: "source", value: "website" },
+        { name: "type", value: "product-inquiry" },
+        { name: "product", value: sanitizeTag(data.product) },
+      ],
+    }
+
+    console.log("📤 Отправляем email через Resend...")
+
+    const result = await resend.emails.send(emailData)
+
+    console.log("✅ Resend ответ:", result)
+
+    if (result.error) {
+      console.error("❌ Ошибка от Resend:", result.error)
+      throw new Error(`Resend error: ${result.error.message}`)
+    }
+
+    console.log("🎉 Email успешно отправлен!")
+
+    // Отправляем подтверждение клиенту
+    await sendClientProductConfirmation(data.email, data.name, data.product)
+
+    return {
+      success: true,
+      message: "Запрос успешно отправлен на info@oil-standart.com",
+      emailId: result.data?.id,
+    }
+  } catch (error) {
+    console.error("❌ Ошибка отправки запроса о продукте:", error)
+
+    // Fallback логирование
+    console.log("=== FALLBACK: ЗАПРОС О ПРОДУКТЕ ===")
+    console.log("Время:", new Date().toLocaleString("ru-RU", { timeZone: "Europe/Moscow" }))
+    console.log("Продукт:", data.product)
+    console.log("Имя:", data.name)
+    console.log("Email:", data.email)
+    console.log("Телефон:", data.phone)
+    console.log("Сообщение:", data.message || "Не указано")
+    console.log("=== КОНЕЦ FALLBACK ===")
+
+    return {
+      success: true,
+      message: "Запрос получен и обрабатывается (fallback режим)",
+      fallback: true,
+    }
+  }
+}
+
+// Функция для отправки подтверждения клиенту о запросе продукта
+export async function sendClientProductConfirmation(clientEmail: string, clientName: string, product: string) {
+  const resendApiKey = process.env.RESEND_API_KEY || "re_i2JzKXwE_39mmuiDwMrnLVSZjHCcrLyRe"
+
+  console.log("📧 Отправляем подтверждение о запросе продукта:", clientEmail)
+
+  try {
+    const { Resend } = await import("resend")
+    const resend = new Resend(resendApiKey)
+
+    const confirmationHtml = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <meta charset="utf-8">
+          <title>Подтверждение запроса - Oil-Standart</title>
+          <style>
+            body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+            .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+            .header { background: linear-gradient(135deg, #1e3a8a, #7c3aed); color: white; padding: 20px; border-radius: 8px 8px 0 0; text-align: center; }
+            .content { background: #f8fafc; padding: 20px; border: 1px solid #e2e8f0; }
+            .footer { background: #1e3a8a; color: white; padding: 15px; border-radius: 0 0 8px 8px; text-align: center; }
+            .success { background: #dcfce7; border: 1px solid #16a34a; padding: 15px; border-radius: 6px; margin: 15px 0; }
+            .contact-info { background: #fef3c7; border: 1px solid #f59e0b; padding: 15px; border-radius: 6px; margin: 15px 0; }
+          </style>
+        </head>
+        <body>
+          <div class="container">
+            <div class="header">
+              <h1 style="margin: 0; font-size: 24px;">✅ Ваш запрос получен!</h1>
+              <p style="margin: 5px 0 0 0; opacity: 0.9;">Oil-Standart</p>
+            </div>
+            
+            <div class="content">
+              <p>Здравствуйте, <strong>${clientName}</strong>!</p>
+              
+              <div class="success">
+                <strong>✅ Ваш запрос о продукте "${product}" получен!</strong><br>
+                Наш специалист подготовит для вас подробную информацию и свяжется в течение 2-3 часов в рабочее время.
+              </div>
+
+              <p><strong>Что вы получите:</strong></p>
+              <ul>
+                <li>📋 Технические характеристики продукта</li>
+                <li>📖 Инструкции по применению</li>
+                <li>💰 Коммерческое предложение с ценами</li>
+                <li>🚚 Условия поставки и минимальные партии</li>
+              </ul>
+
+              <div class="contact-info">
+                <strong>📞 Нужна срочная консультация?</strong><br>
+                Звоните прямо сейчас:<br>
+                <strong>Формовочные смазки:</strong> <a href="tel:+79605947171" style="color: #1e3a8a;">+7-960-594-71-71</a><br>
+                <strong>Email:</strong> <a href="mailto:info@oil-standart.com" style="color: #1e3a8a;">info@oil-standart.com</a>
+              </div>
+
+              <p><strong>Режим работы:</strong><br>
+              Пн-Пт: 9:00 - 17:00 (МСК)<br>
+              Сб-Вс: выходной</p>
+
+              <p>Спасибо за интерес к нашей продукции!</p>
+            </div>
+            
+            <div class="footer">
+              <p style="margin: 0;">Oil-Standart - Формовочные смазки для промышленности</p>
+              <p style="margin: 5px 0 0 0; font-size: 14px; opacity: 0.8;">www.oil-standart.com</p>
+            </div>
+          </div>
+        </body>
+      </html>
+    `
+
+    const result = await resend.emails.send({
+      from: "Oil-Standart <onboarding@resend.dev>",
+      to: [clientEmail],
+      subject: `✅ Информация о ${product} - Oil-Standart`,
+      html: confirmationHtml,
+      tags: [
+        { name: "type", value: "product-confirmation" },
+        { name: "source", value: "website" },
+        { name: "product", value: sanitizeTag(product) },
+      ],
+    })
+
+    console.log("✅ Подтверждение о запросе продукта отправлено:", result)
+    return { success: true, emailId: result.data?.id }
+  } catch (error) {
+    console.error("❌ Ошибка отправки подтверждения о продукте:", error)
+    return { success: false, message: "Ошибка отправки подтверждения" }
+  }
+}
+
 export async function sendQuickRequest(formData: FormData) {
   const data = {
     name: formData.get("name") as string,

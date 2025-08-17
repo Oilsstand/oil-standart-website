@@ -82,27 +82,52 @@ export function Hero() {
           {/* Hero Image Section */}
           <div className="relative">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-2xl">
-              {/* Main Hero Image */}
+              {/* Main Hero Images - разделено на 3 части */}
               <div className="relative h-64 sm:h-72 lg:h-80 rounded-xl overflow-hidden shadow-lg">
-                <img
-                  src="/placeholder.svg?height=400&width=600&text=Производственная линия Oil-Standart с современным оборудованием для производства СОЖ и формовочных смазок"
-                  alt="Производственная линия Oil-Standart"
-                  className="w-full h-full object-cover"
-                />
-
-                {/* Overlay with company info */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-
-                {/* Floating badges */}
-                <div className="absolute top-4 left-4">
-                  <div className="bg-orange-500/90 text-white px-3 py-1 rounded-full text-sm font-semibold backdrop-blur-sm">
-                    Собственное производство
+                <div className="grid grid-cols-3 gap-1 h-full">
+                  {/* Изображение 1 - Производство */}
+                  <div className="relative overflow-hidden rounded-l-xl">
+                    <img
+                      src="/placeholder.svg?height=320&width=200&text=Производство формовочных смазок"
+                      alt="Производство формовочных смазок Oil-Standart"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-2 left-2">
+                      <div className="bg-orange-500/90 text-white px-2 py-1 rounded text-xs font-semibold backdrop-blur-sm">
+                        Производство
+                      </div>
+                    </div>
                   </div>
-                </div>
 
-                <div className="absolute top-4 right-4">
-                  <div className="bg-indigo-900/90 text-white px-3 py-1 rounded-full text-sm font-semibold backdrop-blur-sm">
-                    Стабильное качество
+                  {/* Изображение 2 - СОЖ серии СТАНДАРТ */}
+                  <div className="relative overflow-hidden">
+                    <img
+                      src="/placeholder.svg?height=320&width=200&text=СОЖ серии СТАНДАРТ на станках"
+                      alt="СОЖ серии СТАНДАРТ на промышленных станках"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-2 left-2">
+                      <div className="bg-indigo-900/90 text-white px-2 py-1 rounded text-xs font-semibold backdrop-blur-sm">
+                        СОЖ СТАНДАРТ
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Изображение 3 - Технические жидкости */}
+                  <div className="relative overflow-hidden rounded-r-xl">
+                    <img
+                      src="/placeholder.svg?height=320&width=200&text=Технические жидкости и масла"
+                      alt="Технические жидкости и индустриальные масла"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                    <div className="absolute bottom-2 left-2">
+                      <div className="bg-green-600/90 text-white px-2 py-1 rounded text-xs font-semibold backdrop-blur-sm">
+                        Тех. жидкости
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -120,7 +145,7 @@ export function Hero() {
                       </div>
                       <div>
                         <Settings className="h-6 w-6 text-orange-400 mx-auto mb-1" />
-                        <div className="text-xs text-white/90 font-medium">Оборудование</div>
+                        <div className="text-xs text-white/90 font-medium">Тех. жидкости</div>
                       </div>
                     </div>
                   </div>
