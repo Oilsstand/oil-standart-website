@@ -34,7 +34,16 @@ export async function sendProductInquiry(formData: FormData) {
   console.log("📧 От:", data.name, data.email)
 
   try {
-    const { Resend } = await import("resend")
+    // Динамический импорт с обработкой ошибок
+    let Resend
+    try {
+      const resendModule = await import("resend")
+      Resend = resendModule.Resend
+    } catch (importError) {
+      console.error("❌ Ошибка импорта Resend:", importError)
+      throw new Error("Не удалось загрузить модуль Resend")
+    }
+
     const resend = new Resend(resendApiKey)
 
     // HTML шаблон для email
@@ -171,7 +180,7 @@ ${data.message ? `Сообщение: ${data.message}` : ""}
 
     console.log("🎉 Email успешно отправлен!")
 
-    // Отправляем подтверждение клиенту
+    // Отправляем подтверждение клиенту о запросе продукта
     await sendClientProductConfirmation(data.email, data.name, data.product)
 
     return {
@@ -310,22 +319,21 @@ export async function sendQuickRequest(formData: FormData) {
     }
   }
 
-  // Используем ваш API ключ Resend
   const resendApiKey = process.env.RESEND_API_KEY || "re_i2JzKXwE_39mmuiDwMrnLVSZjHCcrLyRe"
 
   console.log("🔍 Начинаем отправку email...")
-  console.log("📧 API ключ:", resendApiKey ? `${resendApiKey.substring(0, 8)}...` : "НЕ НАЙДЕН")
-  console.log("📋 Данные запроса:", {
-    name: data.name,
-    phone: data.phone,
-    email: data.email || "не указан",
-    company: data.company || "не указана",
-    product: data.product,
-    volume: data.volume,
-  })
 
   try {
-    const { Resend } = await import("resend")
+    // Динамический импорт с обработкой ошибок
+    let Resend
+    try {
+      const resendModule = await import("resend")
+      Resend = resendModule.Resend
+    } catch (importError) {
+      console.error("❌ Ошибка импорта Resend:", importError)
+      throw new Error("Не удалось загрузить модуль Resend")
+    }
+
     const resend = new Resend(resendApiKey)
 
     console.log("✅ Resend инициализирован успешно")
@@ -467,7 +475,6 @@ export async function sendQuickRequest(formData: FormData) {
     console.log("✅ Resend ответ:", result)
 
     if (result.error) {
-      console.error("❌ Ошибка от Resend:", result.error)
       throw new Error(`Resend error: ${result.error.message}`)
     }
 
