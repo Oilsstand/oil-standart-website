@@ -19,10 +19,9 @@ export function CoolantFluids() {
       ],
       applications: ["Токарные станки", "Фрезерные станки", "Сверлильные станки"],
       icon: <Wrench className="h-7 w-7 text-indigo-700" />,
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/2025-08-14_20-04-42-g2te2PFNqcvkrcKlvMPq7XUEuYNRyG.png",
+      image: "/images/standart-m1-label.png",
       popular: true,
-      bestseller: true, // Новое свойство
+      bestseller: true,
     },
     {
       name: "СТАНДАРТ MultiCut 140",
@@ -48,7 +47,7 @@ export function CoolantFluids() {
       features: ["Непрерывная работа 24/7", "Высокие скорости резания", "Стабильность при длительной эксплуатации"],
       applications: ["Станки-автоматы", "Многошпиндельные станки", "Автоматические линии"],
       icon: <Cog className="h-7 w-7 text-indigo-600" />,
-      image: "/images/autocut-200-label.png", // Обновленное изображение
+      image: "/images/autocut-200-label.png",
       popular: false,
       bestseller: false,
     },
@@ -59,7 +58,7 @@ export function CoolantFluids() {
       features: ["Предотвращение налипания стружки", "Идеальная чистота поверхности", "Защита от пятнообразования"],
       applications: ["Алюминий", "Медь", "Латунь", "Цинковые сплавы"],
       icon: <Droplets className="h-7 w-7 text-indigo-600" />,
-      image: "/images/alucut-300-label.png", // Обновить эту строку
+      image: "/images/alucut-300-label.png",
       popular: false,
       bestseller: false,
     },
@@ -130,7 +129,7 @@ export function CoolantFluids() {
                   Популярный
                 </Badge>
               )}
-              <div className="relative h-40 overflow-hidden rounded-t-lg grid grid-cols-2 gap-0">
+              <div className="relative h-24 overflow-hidden rounded-t-lg grid grid-cols-2 gap-0">
                 <div className="relative overflow-hidden">
                   <img
                     src={product.image || "/placeholder.svg"}
@@ -141,8 +140,8 @@ export function CoolantFluids() {
                 <div className="relative overflow-hidden bg-gray-100 flex items-center justify-center">
                   {index === 0 ? (
                     <img
-                      src="/placeholder.svg?height=144&width=140&text=Универсальный станок"
-                      alt="Универсальный токарно-фрезерный станок с системой СОЖ"
+                      src="/images/universal-machining.png"
+                      alt="Токарная обработка с использованием универсальной СОЖ СТАНДАРТ Multi Cut 100"
                       className="w-full h-full object-cover"
                     />
                   ) : index === 1 ? (
@@ -177,7 +176,7 @@ export function CoolantFluids() {
                     />
                   ) : (
                     <img
-                      src="/placeholder.svg?height=144&width=140&text=Продукт в действии"
+                      src="/placeholder.svg?height=96&width=96&text=Продукт+в+действии"
                       alt={`${product.name} в использовании`}
                       className="w-full h-full object-cover opacity-50"
                     />
@@ -261,7 +260,7 @@ export function CoolantFluids() {
                   key={`mr7-${index}`}
                   className="transition-all duration-300 hover:shadow-xl border-4 border-amber-300 hover:border-amber-500"
                 >
-                  <div className="relative h-40 overflow-hidden rounded-t-lg grid grid-cols-2 gap-0">
+                  <div className="relative h-26 overflow-hidden rounded-t-lg grid grid-cols-2 gap-0">
                     <div className="relative overflow-hidden">
                       <img
                         src={product.image || "/placeholder.svg"}
@@ -354,17 +353,17 @@ export function CoolantFluids() {
             <div>
               <div className="grid grid-cols-3 gap-1">
                 <img
-                  src="/placeholder.svg?height=50&width=60&text=Лаборатория"
+                  src="/placeholder.svg?height=34&width=41&text=Лаборатория"
                   alt="Лаборатория контроля качества СОЖ серии СТАНДАРТ"
                   className="w-full h-auto rounded-md shadow-sm"
                 />
                 <img
-                  src="/placeholder.svg?height=50&width=60&text=Производство"
+                  src="/placeholder.svg?height=34&width=41&text=Производство"
                   alt="Производство СОЖ серии СТАНДАРТ"
                   className="w-full h-auto rounded-md shadow-sm"
                 />
                 <img
-                  src="/placeholder.svg?height=50&width=60&text=Тестирование"
+                  src="/placeholder.svg?height=34&width=41&text=Тестирование"
                   alt="Тестирование СОЖ серии СТАНДАРТ"
                   className="w-full h-auto rounded-md shadow-sm"
                 />

@@ -88,7 +88,7 @@ export function Products() {
                   Популярный
                 </Badge>
               )}
-              <div className="relative h-48 overflow-hidden bg-white flex items-center justify-center rounded-t-lg">
+              <div className="relative h-40 overflow-hidden bg-white flex items-center justify-center rounded-t-lg">
                 <img
                   src={product.image || "/placeholder.svg"}
                   alt={product.name}
@@ -144,22 +144,22 @@ export function Products() {
             <div>
               <div className="grid grid-cols-2 gap-1">
                 <img
-                  src="/placeholder.svg?height=60&width=80&text=Производство 1"
+                  src="/placeholder.svg?height=48&width=64&text=Производство 1"
                   alt="Производство формовочных смазок - этап 1"
                   className="w-full h-auto rounded-md shadow-sm"
                 />
                 <img
-                  src="/placeholder.svg?height=60&width=80&text=Производство 2"
+                  src="/placeholder.svg?height=48&width=64&text=Производство 2"
                   alt="Производство формовочных смазок - этап 2"
                   className="w-full h-auto rounded-md shadow-sm"
                 />
                 <img
-                  src="/placeholder.svg?height=60&width=80&text=Производство 3"
+                  src="/placeholder.svg?height=48&width=64&text=Производство 3"
                   alt="Производство формовочных смазок - этап 3"
                   className="w-full h-auto rounded-md shadow-sm"
                 />
                 <img
-                  src="/placeholder.svg?height=60&width=80&text=Производство 4"
+                  src="/placeholder.svg?height=48&width=64&text=Производство 4"
                   alt="Производство формовочных смазок - этап 4"
                   className="w-full h-auto rounded-md shadow-sm"
                 />

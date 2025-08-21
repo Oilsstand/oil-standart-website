@@ -83,12 +83,12 @@ export function Hero() {
           <div className="relative">
             <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 shadow-2xl">
               {/* Main Hero Images - разделено на 2 части */}
-              <div className="relative h-64 sm:h-72 lg:h-80 rounded-xl overflow-hidden shadow-lg">
+              <div className="relative h-52 sm:h-58 lg:h-64 rounded-xl overflow-hidden shadow-lg">
                 <div className="grid grid-cols-2 gap-2 h-full">
                   {/* Изображение 1 - Производство */}
                   <div className="relative overflow-hidden rounded-l-xl">
                     <img
-                      src="/placeholder.svg?height=320&width=300&text=Производство формовочных смазок"
+                      src="/placeholder.svg?height=256&width=240&text=Производство формовочных смазок"
                       alt="Производство формовочных смазок Oil-Standart"
                       className="w-full h-full object-cover"
                     />
@@ -103,7 +103,7 @@ export function Hero() {
                   {/* Изображение 2 - СОЖ серии СТАНДАРТ */}
                   <div className="relative overflow-hidden rounded-r-xl">
                     <img
-                      src="/placeholder.svg?height=320&width=300&text=СОЖ серии СТАНДАРТ на станках"
+                      src="/placeholder.svg?height=256&width=240&text=СОЖ серии СТАНДАРТ на станках"
                       alt="СОЖ серии СТАНДАРТ на промышленных станках"
                       className="w-full h-full object-cover"
                     />
@@ -122,7 +122,7 @@ export function Hero() {
                 <img
                   src="/images/oil-standart-logo.jpg"
                   alt="Oil-Standart Logo"
-                  className="h-16 w-16 rounded-full shadow-lg border-2 border-white/30"
+                  className="h-12 w-12 rounded-full shadow-lg border-2 border-white/30"
                 />
                 <div className="text-center">
                   <h3 className="text-xl font-bold text-white">Oil-Standart</h3>
