@@ -1,0 +1,30 @@
+User-agent: *
+Allow: /
+
+# Основные страницы
+Allow: /#products
+Allow: /#coolant-fluids
+Allow: /#technical-fluids
+Allow: /#about
+Allow: /#contact
+
+# Запрещаем индексацию служебных файлов
+Disallow: /_next/
+Disallow: /api/
+Disallow: /*.json$
+
+# Указываем местоположение карты сайта
+Sitemap: https://oil-standart.com/sitemap.xml
+
+# Время задержки между запросами (в секундах)
+Crawl-delay: 1
+
+# Специальные правила для Яндекса
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2
+
+# Специальные правила для Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
